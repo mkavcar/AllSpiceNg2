@@ -69,6 +69,7 @@ body {
 /*Bootstrap overrides*/
 a {
     color:black;
+    cursor: pointer;
 }
 
 .dropdown-menu>li>a:focus,
@@ -121,6 +122,10 @@ h2 {
 
 .navbar-brand {
     padding-left: 5px;
+}
+
+[hidden], template {
+    display: none!important;
 }
 
 /* ng-tag-input overrides */
