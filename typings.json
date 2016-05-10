@@ -1,7 +1,10 @@
 {
+  "dependencies": {},
+  "devDependencies": {},
+  "ambientDevDependencies": {   
+  },
   "ambientDependencies": {
-    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
-    "firebase": "registry:dt/firebase#2.4.1+20160412125105",
-    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#5c182b9af717f73146399c2485f70f1e2ac0ff2b"
+    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
+    "firebase": "registry:dt/firebase#2.4.1+20160412125105"
   }
 }
