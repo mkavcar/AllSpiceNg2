@@ -1,48 +1,87 @@
+<!doctype html>
 <html>
-  <head>
-    <title>All Spice</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="content/style.css">
-
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
-
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="https://npmcdn.com/typescript@1.8.10/lib/typescript.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-
-    <!-- 2. Configure SystemJS -->
-    <script>
+<head>
+  <base href="/">
+  <title>All Spice</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="content/style.css">
+  
+  <script src="node_modules/es6-shim/es6-shim.js"></script>  
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <script>
       System.config({
-        transpiler: 'typescript', 
-        typescriptOptions: { emitDecoratorMetadata: true }, 
-        packages: {'app': {defaultExtension: 'ts'}} 
-        
-        /*packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
+          map: {
+              app: 'dist',
+              '@angular': 'node_modules/@angular',
+              rxjs: 'node_modules/rxjs',
+              firebase: 'node_modules/firebase/lib/firebase-web.js',
+              angularfire2: 'node_modules/angularfire2'
+          },
+          packages: {
+              app: {
+                  main: 'main.js',
+                  defaultExtension: 'js'
+              },
+              rxjs: {
+                  defaultExtension: 'js'
+              },
+              angularfire2: {
+                  main: 'angularfire2.js',
+                  defaultExtension: 'js'                
+              },
+              '@angular/common': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/compiler': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/core': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/http': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/platform-browser': {
+                  main: 'index.js', 
+                  defaultExtension: 'js'
+              },
+              '@angular/platform-browser-dynamic': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/router': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/router-deprecated': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              },
+              '@angular/upgrade': {
+                  main: 'index.js',
+                  defaultExtension: 'js'
+              }
           }
-        }*/
       });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
-    </script>
-  </head>
-
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
+      System.import('app')
+        .then(null, console.error.bind(console));
+  </script>
+</head>
+<body>
+  <spice-app></spice-app>
+</body>
 </html>
