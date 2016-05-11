@@ -60,6 +60,12 @@ body {
     border-radius: 50%;
 }
 
+.spice-card {
+    max-width:1000px;
+    margin-bottom:2px;
+    background:#ccc
+}
+
 /* Animations */
 .animate-hide-flipOutX.ng-leave { animation:1s flipOutX ease; }
 .animate-show-flipInX.ng-enter { animation:1s flipInX ease; }
@@ -151,5 +157,9 @@ tags-input .tags .tag-item {
 
     .navbar-brand {
         padding-left: 15px;
+    }
+    
+    .spice-card {
+        margin-bottom:15px;
     }
 }
