@@ -1,12 +1,17 @@
 {
     "compilerOptions": {
+        //"module": "system",
         "module": "commonjs",
+        "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
+        "removeComments": true,
         "sourceMap": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "outDir" : "dist"
+        "outDir" : "dist"/*,
+        "outFile" : "prod/app.js"*/
+        
     },
     "files": [
         "typings/browser.d.ts",
