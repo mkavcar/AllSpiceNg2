@@ -10,7 +10,7 @@ import { AngularFire } from 'angularfire2';
     <ul *ngIf="af.auth | async" class="userDropdown">
         <li>
             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="{{ profileImageURL }}">{{ displayName }}&nbsp;&nbsp;<span style="color:#89E894;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                <img src="{{ profileImageURL }}"><span class="hidden-xs">{{ displayName }}&nbsp;&nbsp;</span><span style="color:#89E894;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             </a>
             <ul class="dropdown-menu">
                 <li><a (click)="logout()">Logout</a></li>
@@ -37,6 +37,6 @@ export class LoginButton {
     
     logout() {
         this.af.auth.logout();
-        this.router.navigate(['MyFeed']);
+        this.router.navigate(['/']);
     }
 }

@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Control } from '@angular/common';
 import { Router, Routes, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AngularFire } from 'angularfire2';
 import 'rxjs/add/operator/debounceTime';
+///<reference path="../typings/browser/main/jquery/index.d.ts" />
 
 import { SearchService } from './services/search.service';
 import { SpiceService } from './spice/spice.service';
 import { SpiceFeed } from './spice/spice-feed.component';
 import { AddSpice } from './spice/add-spice.component';
 import { LoginButton } from './components/loginbutton.component';
+import { AddSpiceModal } from './spice/add-spice-modal.component';
 
 @Component({
     selector: 'spice-app',
-    directives: [ ROUTER_DIRECTIVES, LoginButton ],
+    directives: [ ROUTER_DIRECTIVES, LoginButton, AddSpiceModal ],
     providers: [ ROUTER_PROVIDERS, SearchService, SpiceService ],
     template: `
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
@@ -40,6 +42,9 @@ import { LoginButton } from './components/loginbutton.component';
         <ul *ngIf="af.auth | async" class="nav navbar-nav navbar-right" style="margin-right:0px;">
             <li><a (click)="openAddSpice()"><span style="color:#89E894" class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Spice</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right" style="margin-right:0px;">
+            <li><a (click)="openModal()"><span style="color:#89E894" class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Spice (m)</a></li>
+        </ul>
 
         <form class="navbar-form navbar-right hidden-xs" role="search" style="margin-right:0">
           <div class="form-group">
@@ -55,6 +60,7 @@ import { LoginButton } from './components/loginbutton.component';
     </div>
     </nav>
     <router-outlet></router-outlet>    
+    <add-spice-modal></add-spice-modal>
     `
 })
 
@@ -65,6 +71,7 @@ import { LoginButton } from './components/loginbutton.component';
 ])
 
 export class SpiceApp {
+    @ViewChild(AddSpiceModal) addSpiceModal:AddSpiceModal;
     search = new Control();
     
     constructor(private searchService: SearchService, private spiceService: SpiceService, public router: Router, public af: AngularFire) {
@@ -76,5 +83,10 @@ export class SpiceApp {
     openAddSpice() {
         this.spiceService.setObj(null);
         this.router.navigate(['/addSpice']);
+    }
+    
+    openModal() {
+        console.log('hello');
+        this.addSpiceModal.open(null);
     }
 }

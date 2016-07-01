@@ -18,6 +18,7 @@ var spice_service_1 = require('./spice/spice.service');
 var spice_feed_component_1 = require('./spice/spice-feed.component');
 var add_spice_component_1 = require('./spice/add-spice.component');
 var loginbutton_component_1 = require('./components/loginbutton.component');
+var add_spice_modal_component_1 = require('./spice/add-spice-modal.component');
 var SpiceApp = (function () {
     function SpiceApp(searchService, spiceService, router, af) {
         this.searchService = searchService;
@@ -31,12 +32,20 @@ var SpiceApp = (function () {
         this.spiceService.setObj(null);
         this.router.navigate(['/addSpice']);
     };
+    SpiceApp.prototype.openModal = function () {
+        console.log('hello');
+        this.addSpiceModal.open(null);
+    };
+    __decorate([
+        core_1.ViewChild(add_spice_modal_component_1.AddSpiceModal), 
+        __metadata('design:type', add_spice_modal_component_1.AddSpiceModal)
+    ], SpiceApp.prototype, "addSpiceModal", void 0);
     SpiceApp = __decorate([
         core_1.Component({
             selector: 'spice-app',
-            directives: [router_1.ROUTER_DIRECTIVES, loginbutton_component_1.LoginButton],
+            directives: [router_1.ROUTER_DIRECTIVES, loginbutton_component_1.LoginButton, add_spice_modal_component_1.AddSpiceModal],
             providers: [router_1.ROUTER_PROVIDERS, search_service_1.SearchService, spice_service_1.SpiceService],
-            template: "\n    <nav class=\"navbar navbar-default navbar-inverse navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <login-button class=\"pull-right\" style=\"margin-top:8px;\"></login-button>\n        \n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse\" aria-expanded=\"false\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" [routerLink]=\"['/']\"><span style=\"color:#89E894\" class=\"glyphicon glyphicon-grain\" aria-hidden=\"true\"></span> All Spice</a>\n        </div>\n\n        <div class=\"collapse navbar-collapse\" id=\"navbar-collapse\">\n        <ul class=\"nav navbar-nav\">\n            <li><a [routerLink]=\"['/']\">My Feed</a></li>\n            <li *ngIf=\"af.auth | async\" ><a [routerLink]=\"['/','mySpice']\">My Spice</a></li>\n        </ul>\n\n        <ul *ngIf=\"af.auth | async\" class=\"nav navbar-nav navbar-right\" style=\"margin-right:0px;\">\n            <li><a (click)=\"openAddSpice()\"><span style=\"color:#89E894\" class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> Add Spice</a></li>\n        </ul>\n\n        <form class=\"navbar-form navbar-right hidden-xs\" role=\"search\" style=\"margin-right:0\">\n          <div class=\"form-group\">\n            <div class=\"input-group\">\n                <div class=\"input-group-addon\">\n                <span style=\"color:#89E894\" class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n                </div>\n                <input [ngFormControl]=\"search\" type=\"text\" class=\"form-control search-input\" placeholder=\"Search\" />\n            </div>\n          </div>\n        </form>\n        </div>\n    </div>\n    </nav>\n    <router-outlet></router-outlet>    \n    "
+            template: "\n    <nav class=\"navbar navbar-default navbar-inverse navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <login-button class=\"pull-right\" style=\"margin-top:8px;\"></login-button>\n        \n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse\" aria-expanded=\"false\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" [routerLink]=\"['/']\"><span style=\"color:#89E894\" class=\"glyphicon glyphicon-grain\" aria-hidden=\"true\"></span> All Spice</a>\n        </div>\n\n        <div class=\"collapse navbar-collapse\" id=\"navbar-collapse\">\n        <ul class=\"nav navbar-nav\">\n            <li><a [routerLink]=\"['/']\">My Feed</a></li>\n            <li *ngIf=\"af.auth | async\" ><a [routerLink]=\"['/','mySpice']\">My Spice</a></li>\n        </ul>\n\n        <ul *ngIf=\"af.auth | async\" class=\"nav navbar-nav navbar-right\" style=\"margin-right:0px;\">\n            <li><a (click)=\"openAddSpice()\"><span style=\"color:#89E894\" class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> Add Spice</a></li>\n        </ul>\n        <ul class=\"nav navbar-nav navbar-right\" style=\"margin-right:0px;\">\n            <li><a (click)=\"openModal()\"><span style=\"color:#89E894\" class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> Add Spice (m)</a></li>\n        </ul>\n\n        <form class=\"navbar-form navbar-right hidden-xs\" role=\"search\" style=\"margin-right:0\">\n          <div class=\"form-group\">\n            <div class=\"input-group\">\n                <div class=\"input-group-addon\">\n                <span style=\"color:#89E894\" class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n                </div>\n                <input [ngFormControl]=\"search\" type=\"text\" class=\"form-control search-input\" placeholder=\"Search\" />\n            </div>\n          </div>\n        </form>\n        </div>\n    </div>\n    </nav>\n    <router-outlet></router-outlet>    \n    <add-spice-modal></add-spice-modal>\n    "
         }),
         router_1.Routes([
             { path: '/', component: spice_feed_component_1.SpiceFeed },

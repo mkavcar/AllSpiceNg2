@@ -41,7 +41,7 @@ import { Spice } from './spice.model';
                         <div class="col-sm-4">
                             <div class="form-group" [class.has-error]="!prepTime.valid && !prepTime.pristine">
                                 <label><span class="glyphicon glyphicon-time" aria-hidden="true" style="top: 2px;"></span> Prep (min)</label>
-                                <input name="inputPrepTime" [(ngModel)]="spice.prepTime" ngControl="prepTime" #prepTime="ngForm" class="form-control" type="number" min="1" max="999" ng-maxlength="3">
+                                <input name="inputPrepTime" [(ngModel)]="spice.prepTime" ngControl="prepTime" #prepTime="ngForm" class="form-control" maxlength="3" pattern="^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$" />
                                 <div [hidden]="prepTime.valid || prepTime.pristine" class="help-block" role="alert">
                                     <div>Please enter 1-999</div>
                                 </div>
@@ -50,7 +50,7 @@ import { Spice } from './spice.model';
                         <div class="col-sm-4">
                             <div class="form-group" [class.has-error]="!cookTime.valid && !cookTime.pristine">
                                 <label><span class="glyphicon glyphicon-time" aria-hidden="true" style="top: 2px;"></span> Cook (min)</label>
-                                <input name="inputCookTime" [(ngModel)]="spice.cookTime" ngControl="cookTime" #cookTime="ngForm" class="form-control" type="number" min="1" max="999" ng-maxlength="3">
+                                <input name="inputCookTime" [(ngModel)]="spice.cookTime" ngControl="cookTime" #cookTime="ngForm" class="form-control" maxlength="3" pattern="^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$" />
                                 <div [hidden]="cookTime.valid || cookTime.pristine" class="help-block" role="alert">
                                     <div>Please enter 1-999</div>
                                 </div>
@@ -59,7 +59,7 @@ import { Spice } from './spice.model';
                         <div class="col-sm-4">
                             <div class="form-group" [class.has-error]="!servings.valid && !servings.pristine">
                                 <label><span class="glyphicon glyphicon-cutlery" aria-hidden="true" style="top: 2px;"></span> Servings</label>
-                                <input name="inputServings" [(ngModel)]="spice.servings" ngControl="servings" #servings="ngForm" class="form-control" type="number" min="1" max="99" ng-maxlength="2">
+                                <input name="inputServings" [(ngModel)]="spice.servings" ngControl="servings" #servings="ngForm" class="form-control" maxlength="2" pattern="^([1-9]|[1-9][0-9])$" />
                                 <div [hidden]="servings.valid || servings.pristine" class="help-block" role="alert">
                                     <div>Please enter 1-99</div>
                                 </div>

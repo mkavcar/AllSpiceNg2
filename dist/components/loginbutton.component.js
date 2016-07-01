@@ -25,12 +25,12 @@ var LoginButton = (function () {
     }
     LoginButton.prototype.logout = function () {
         this.af.auth.logout();
-        this.router.navigate(['MyFeed']);
+        this.router.navigate(['/']);
     };
     LoginButton = __decorate([
         core_1.Component({
             selector: 'login-button',
-            template: "\n    <button *ngIf=\"!(af.auth | async)\" class=\"btn btn-success\" (click)=\"af.auth.login()\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> Login</button>\n\n    <ul *ngIf=\"af.auth | async\" class=\"userDropdown\">\n        <li>\n            <a href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <img src=\"{{ profileImageURL }}\">{{ displayName }}&nbsp;&nbsp;<span style=\"color:#89E894;\" class=\"glyphicon glyphicon-chevron-down\" aria-hidden=\"true\"></span>\n            </a>\n            <ul class=\"dropdown-menu\">\n                <li><a (click)=\"logout()\">Logout</a></li>\n            </ul>\n        </li>\n    </ul>\n  "
+            template: "\n    <button *ngIf=\"!(af.auth | async)\" class=\"btn btn-success\" (click)=\"af.auth.login()\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> Login</button>\n\n    <ul *ngIf=\"af.auth | async\" class=\"userDropdown\">\n        <li>\n            <a href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <img src=\"{{ profileImageURL }}\"><span class=\"hidden-xs\">{{ displayName }}&nbsp;&nbsp;</span><span style=\"color:#89E894;\" class=\"glyphicon glyphicon-chevron-down\" aria-hidden=\"true\"></span>\n            </a>\n            <ul class=\"dropdown-menu\">\n                <li><a (click)=\"logout()\">Logout</a></li>\n            </ul>\n        </li>\n    </ul>\n  "
         }), 
         __metadata('design:paramtypes', [router_1.Router, angularfire2_1.AngularFire])
     ], LoginButton);

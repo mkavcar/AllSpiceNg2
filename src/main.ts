@@ -11,7 +11,7 @@ bootstrap(SpiceApp, [
     FIREBASE_PROVIDERS,
     defaultFirebase('https://amber-heat-8766.firebaseio.com'),
     firebaseAuthConfig({
-        method: AuthMethods.Popup,
+        method: AuthMethods.Redirect,
         provider: AuthProviders.Google
     }),
     provide(APP_BASE_HREF, {useValue: '/'}),

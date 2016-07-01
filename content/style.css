@@ -140,6 +140,11 @@ tags-input .tags .tag-item {
     border: 1px solid #eea236;
 }
 
+.modal-content {
+    background-color:#eee;
+    border-radius: 3px;
+}
+
 /* media queries */
 @media (min-width: 768px) {  
     body {
@@ -161,5 +166,10 @@ tags-input .tags .tag-item {
     
     .spice-card {
         margin-bottom:15px;
+    }
+    
+    .modal-dialog {
+        max-width: 860px;
+        width: inherit;
     }
 }

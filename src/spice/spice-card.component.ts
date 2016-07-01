@@ -9,7 +9,7 @@ import { Spice } from './spice.model';
 @Component({
     selector: 'spice-card',
     template: `
-    <div class="container-fluid" style="max-width:1000px;margin-bottom:15px;background:#ccc">
+    <div class="container-fluid spice-card">
       <div class="row animate-show-flipInX" *ngIf="userId">
         <div *ngIf="showConfirm !== true" class="col-xs-12 animate-show" style="background:#89E894;padding-bottom:10px;padding-top:10px;">
           <button *ngIf="userId !== spice.user.uid" (click)="togglePin()" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-heart" aria-hidden="true" title="Pin\Unpin to My Feed"></span> {{ (isPinned) ? 'Unpin' : 'Pin' }}</button>
@@ -58,7 +58,7 @@ import { Spice } from './spice.model';
           </div>
         </div>
         <div class="col-sm-6" style="padding:0">
-          <img style="width:100%;" src="{{spice.imageURL}}">
+          <img *ngIf="spice.imageURL" style="width:100%;" src="{{spice.imageURL}}">
         </div>
       </div>
       <div class="row">
